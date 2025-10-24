@@ -8,12 +8,12 @@ router.get("/transfer", (req, res) => {
 });
 
 router.post("/transfer", (req, res) => {
-  const account_from = accounts[req.body.from]
-  const balance_from = account_from.balance;
-  account_from.balance = balance_from - req.body.amount;
+  const accountFrom = accounts[req.body.from];
+  const balanceFrom = accountFrom.balance;
+  accountFrom.balance = balanceFrom - req.body.amount;
 
-  const account_to = accounts[req.body.to];
-  account_to.balance += parseInt(req.body.amount);
+  const accountTo = accounts[req.body.to];
+  accountTo.balance += parseInt(req.body.amount);
 
   writeJSON();
 
@@ -21,7 +21,7 @@ router.post("/transfer", (req, res) => {
 });
 
 router.get("/payment", (req, res) => {
-  res.render("payment", {accounts: accounts.credit});
+  res.render("payment", { accounts: accounts.credit });
 });
 
 router.post("/payment", (req, res) => {
