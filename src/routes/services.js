@@ -10,7 +10,7 @@ router.get("/transfer", (req, res) => {
 router.post("/transfer", (req, res) => {
   const accountFrom = accounts[req.body.from];
   const balanceFrom = accountFrom.balance;
-  accountFrom.balance = balanceFrom - req.body.amount;
+  accountFrom.balance = balanceFrom - parseInt(req.body.amount);
 
   const accountTo = accounts[req.body.to];
   accountTo.balance += parseInt(req.body.amount);
